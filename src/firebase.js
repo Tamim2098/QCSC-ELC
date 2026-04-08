@@ -2,17 +2,17 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
-import { getAuth } from "firebase/auth"; // Auth import korun
+import { getAuth } from "firebase/auth";
 
-// Your web app's Firebase configuration
+// Your web app's Firebase configuration using Environment Variables
 const firebaseConfig = {
-  apiKey: "AIzaSyDnpNlgH1NasEcyhxJHq_1W4lBpngMRUT8",
-  authDomain: "qcsc-elc.firebaseapp.com",
-  projectId: "qcsc-elc",
-  storageBucket: "qcsc-elc.appspot.com", // "firebasestorage.app" er poriborte "appspot.com" use korun
-  messagingSenderId: "550231317490",
-  appId: "1:550231317490:web:d8027a369ae039af93a96b",
-  measurementId: "G-3CFDVC64Y5"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 // Initialize Firebase
@@ -21,4 +21,4 @@ const analytics = getAnalytics(app);
 
 // Initialize and export Firebase services
 export const db = getFirestore(app);
-export const auth = getAuth(app); // Auth o export korun
+export const auth = getAuth(app);
