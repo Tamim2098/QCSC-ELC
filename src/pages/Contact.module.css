@@ -1,0 +1,498 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+.ctRoot {
+  --gold: #C9A84C;
+  --gold-dim: rgba(201,168,76,0.18);
+  --gold-border: rgba(201,168,76,0.28);
+  --dark: #0e1016;
+  --card-bg: #111420;
+  --muted: rgba(255,255,255,0.45);
+  font-family: 'DM Sans', sans-serif;
+  background: var(--dark);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Hero */
+.ctHero {
+  position: relative;
+  text-align: center;
+  padding: 88px 24px 64px;
+  overflow: hidden;
+}
+.ctHero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 55% 45% at 50% 100%, rgba(201,168,76,0.10) 0%, transparent 70%);
+  pointer-events: none;
+}
+.ctHero::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+.ctGridLines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10%;
+  overflow: hidden;
+}
+.ctGridLine {
+  width: 1px;
+  height: 100%;
+  background: rgba(201,168,76,0.06);
+}
+
+.ctBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(201,168,76,0.10);
+  border: 1px solid var(--gold-border);
+  border-radius: 50px;
+  padding: 7px 20px;
+  margin-bottom: 28px;
+}
+.ctBadgeDot {
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+.ctBadgeText {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.ctTitle {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(32px, 5vw, 58px);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.12;
+  letter-spacing: 0.04em;
+  margin: 0 0 14px;
+}
+.ctTitle em {
+  color: var(--gold);
+  font-style: normal;
+}
+
+.ctSubtitle {
+  font-size: clamp(13px, 1.8vw, 16px);
+  font-weight: 300;
+  color: var(--muted);
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+.ctDivider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 22px auto;
+}
+.ctDividerLine {
+  width: 64px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold));
+}
+.ctDividerLineRev {
+  width: 64px;
+  height: 1px;
+  background: linear-gradient(to left, transparent, var(--gold));
+}
+.ctDividerDiamond {
+  width: 7px;
+  height: 7px;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+
+/* Body */
+.ctBody {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 24px 96px;
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+/* Left Card */
+.ctLeft {
+  background: var(--card-bg);
+  border: 1px solid rgba(201,168,76,0.18);
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+}
+.ctLeft::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+.ctLeftTop {
+  padding: 32px 28px 24px;
+}
+.ctLeftHeading {
+  font-family: 'Cinzel', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+  margin: 0 0 6px;
+}
+.ctLeftSub {
+  font-size: 12.5px;
+  color: var(--muted);
+  margin: 0;
+}
+
+.ctInfoList {
+  padding: 4px 28px 24px;
+  display: flex;
+  flex-direction: column;
+}
+.ctInfoItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.ctInfoItem:last-child {
+  border-bottom: none;
+}
+.ctInfoIcon {
+  width: 42px;
+  height: 42px;
+  background: var(--gold-dim);
+  border: 1px solid var(--gold-border);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  flex-shrink: 0;
+  transition: background 0.22s, transform 0.22s;
+}
+.ctInfoItem:hover .ctInfoIcon {
+  background: rgba(201,168,76,0.28);
+  transform: scale(1.06);
+}
+.ctInfoText { flex: 1; }
+.ctInfoLabel {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 4px;
+  display: block;
+}
+.ctInfoValue {
+  font-size: 13.5px;
+  color: rgba(255,255,255,0.80);
+  line-height: 1.55;
+  font-weight: 400;
+}
+
+/* Facebook Button */
+.ctFbBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 28px 20px;
+  padding: 13px;
+  background: #1a2540;
+  border: 1px solid rgba(66,103,178,0.35);
+  border-radius: 10px;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  transition: all 0.22s;
+}
+.ctFbBtn:hover {
+  background: #1f2e52;
+  border-color: rgba(66,103,178,0.65);
+  transform: translateY(-2px);
+}
+.ctFbIcon {
+  width: 28px;
+  height: 28px;
+  background: #4267b2;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Map */
+.ctMap {
+  margin: 0 28px 28px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--gold-border);
+  position: relative;
+}
+.ctMapBadge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  background: rgba(14,16,22,0.88);
+  border: 1px solid var(--gold-border);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  backdrop-filter: blur(6px);
+}
+.ctMap iframe {
+  display: block;
+  width: 100%;
+  height: 200px;
+  border: none;
+  filter: grayscale(20%) contrast(1.05);
+}
+
+/* Right Card */
+.ctRight {
+  background: var(--card-bg);
+  border: 1px solid rgba(201,168,76,0.18);
+  border-radius: 18px;
+  padding: 36px 32px 32px;
+  position: relative;
+}
+.ctRight::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+.ctFormHeading {
+  font-family: 'Cinzel', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+  margin: 0 0 6px;
+}
+.ctFormSub {
+  font-size: 12.5px;
+  color: var(--muted);
+  margin: 0 0 32px;
+}
+
+.ctFormRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.ctFormGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.ctFormGroupNoMb {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 0;
+}
+
+.ctLabel {
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: rgba(201,168,76,0.75);
+}
+
+.ctInput {
+  width: 100%;
+  box-sizing: border-box;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 10px;
+  padding: 13px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: rgba(255,255,255,0.85);
+  outline: none;
+  transition: border-color 0.22s, background 0.22s, box-shadow 0.22s;
+}
+.ctInput::placeholder {
+  color: rgba(255,255,255,0.22);
+}
+.ctInput:focus {
+  border-color: var(--gold);
+  background: rgba(201,168,76,0.05);
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.10);
+}
+
+.ctTextarea {
+  width: 100%;
+  box-sizing: border-box;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 10px;
+  padding: 13px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: rgba(255,255,255,0.85);
+  outline: none;
+  transition: border-color 0.22s, background 0.22s, box-shadow 0.22s;
+  resize: vertical;
+  min-height: 140px;
+  line-height: 1.6;
+}
+.ctTextarea::placeholder {
+  color: rgba(255,255,255,0.22);
+}
+.ctTextarea:focus {
+  border-color: var(--gold);
+  background: rgba(201,168,76,0.05);
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.10);
+}
+
+.ctSubmit {
+  width: 100%;
+  margin-top: 24px;
+  padding: 15px 24px;
+  background: var(--gold);
+  border: none;
+  border-radius: 10px;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: #0e1016;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 6px 24px rgba(201,168,76,0.30);
+  transition: all 0.22s;
+}
+.ctSubmit:hover:not(:disabled) {
+  background: #b8923d;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(201,168,76,0.40);
+  color: #fff;
+}
+.ctSubmit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.ctSpinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(14,16,22,0.3);
+  border-top-color: #0e1016;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+/* Success */
+.ctSuccess {
+  text-align: center;
+  padding: 48px 24px;
+  animation: successPop 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.ctSuccessIcon {
+  width: 64px;
+  height: 64px;
+  background: rgba(201,168,76,0.14);
+  border: 1px solid var(--gold-border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 28px;
+}
+.ctSuccessTitle {
+  font-family: 'Cinzel', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 10px;
+}
+.ctSuccessText {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.8); }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes successPop {
+  0%   { opacity: 0; transform: scale(0.9) translateY(12px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.fadeUp { opacity: 0; }
+.fadeUp.visible    { animation: fadeUp 0.75s ease forwards; }
+.fadeUp.visible.d1 { animation-delay: 0.08s; }
+.fadeUp.visible.d2 { animation-delay: 0.18s; }
+.fadeUp.visible.d3 { animation-delay: 0.28s; }
+
+/* Responsive */
+@media (max-width: 960px) {
+  .ctBody {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+  }
+}
+@media (max-width: 520px) {
+  .ctHero { padding: 60px 18px 48px; }
+  .ctBody { padding: 0 16px 64px; }
+  .ctFormRow { grid-template-columns: 1fr; }
+  .ctLeftTop { padding-left: 20px; padding-right: 20px; }
+  .ctInfoList { padding-left: 20px; padding-right: 20px; }
+  .ctFbBtn { margin-left: 20px; margin-right: 20px; }
+  .ctMap { margin-left: 20px; margin-right: 20px; }
+  .ctRight { padding: 28px 20px 24px; }
+}
