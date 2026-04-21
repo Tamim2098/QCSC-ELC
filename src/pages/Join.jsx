@@ -10,7 +10,7 @@ const SuccessScreen = ({ onNavigate }) => {
   React.useEffect(() => {
     const interval = setInterval(() => {
       setCount((c) => {
-        if (c <= 1) { clearInterval(interval); onNavigate(); return 0; }
+        if (c <= 1) { clearInterval(interval); setTimeout(() => onNavigate(), 0); return 0; }
         return c - 1;
       });
     }, 1000);
@@ -234,18 +234,32 @@ const Join = () => {
         }
 
         .photo-upload-box {
-          position: absolute; top: 18px; right: 20px;
-          width: 68px; height: 86px;
+          position: absolute; top: 14px; right: 14px;
+          width: 58px; height: 74px;
           border: 1px dashed rgba(201,168,76,0.40);
           border-radius: 8px;
           display: flex; flex-direction: column;
           align-items: center; justify-content: center;
           background: rgba(201,168,76,0.04);
-          gap: 5px; cursor: pointer; overflow: hidden;
+          gap: 3px; cursor: pointer; overflow: hidden;
           transition: border-color 0.2s, background 0.2s;
           z-index: 6;
         }
         .photo-upload-box:hover { border-color: rgba(201,168,76,0.70); background: rgba(201,168,76,0.08); }
+
+        .photo-label {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 7px;
+          color: rgba(201,168,76,0.55);
+          letter-spacing: 0.02em;
+          text-align: center;
+          line-height: 1.5;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 0 3px;
+          width: 100%;
+        }
 
         .gender-opt {
           display: flex; align-items: center; gap: 7px; cursor: pointer;
@@ -351,7 +365,6 @@ const Join = () => {
 
           {/* ── Header ── */}
           <div style={{ textAlign: 'center', marginBottom: '44px' }}>
-
             <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '18px', ...rev(0.06) }}>
               <span style={{
                 display: 'inline-flex', alignItems: 'center', gap: '8px',
@@ -429,14 +442,15 @@ const Join = () => {
                     <img src={photo} alt="passport" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                   ) : (
                     <>
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,0.5)" strokeWidth="1.5">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,0.5)" strokeWidth="1.5">
                         <circle cx="12" cy="8" r="4" /><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
                       </svg>
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,0.4)" strokeWidth="2" strokeLinecap="round">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,0.4)" strokeWidth="2" strokeLinecap="round">
                         <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" /><polyline points="17 8 12 3 7 8" /><line x1="12" y1="3" x2="12" y2="15" />
                       </svg>
-                      <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: '8px', color: 'rgba(201,168,76,0.55)', letterSpacing: '0.04em', textAlign: 'center', lineHeight: 1.4 }}>
-                        Upload{'\n'}Photo
+                      <span className="photo-label">
+                        <span>Upload</span>
+                        <span>Photo</span>
                       </span>
                     </>
                   )}
